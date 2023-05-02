@@ -189,15 +189,36 @@
     }
 
     to {
-      background-color: #000;
+      background-color: #f10dd3 !important;
+    }
+
+    to {
+      background-color: #002855;
     }
   }
 
-  .box {
-    width: 100px;
-    height: 100px;
+  @keyframes pulse1 {
+    from {
+      background-color: #FFF;
+    }
+
+    to {
+      background-color: #f10dd3;
+    }
+  }
+
+  .box1 {
+    width: 300px;
+    height: 400px;
     background-color: #FFF;
     animation: pulse 1s infinite;
+  }
+
+  .box2 {
+    width: 50px;
+    height: 400px;
+    background-color: #FFF;
+    animation: pulse1 1s infinite;
   }
 </style>
 </head>
@@ -234,9 +255,36 @@
         <a href="#">View details</a>
       </div>
     </div>
-    <div class="box"></div>
-    <audio id="myAudio" src="myAudio.wav"></audio>
-    <script src="script.js"></script>
+    <div id="song1" class="box1">
+    </div>
+    <div id="song2" class="box2">
+    </div>
+
+    <audio id="myAudioControl"
+      src="/home/lucas/space/public /audio/ich-hab-vergessen-clean-demo-acoustic-with-vocals.mp3" controls></audio>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const songSrc = document.getElementById("myAudioControl");
+
+    function setSong(songNumber) {
+      if (songNumber === 1) {
+        songSrc.value = "/home/lucas/space/public/audio/ich-hab-vergessen-clean-demo-acoustic-with-vocals.mp3";
+
+        songSrc.load();
+        songSrc.addEventListener('canplaythrough', function () {
+          songSrc.play();
+        });
+      } else {
+        songSrc.src = "/home/lucas/space/public/audio/audacity-demo.mp3";
+
+        songSrc.load();
+        songSrc.play();
+      }
+    }
+  </script>
+
 </body>
 
 </html>

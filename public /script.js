@@ -7,7 +7,9 @@ audio.src = "myAudio.wav";
 // Add an event listener to detect when the WAV file has finished loading
 audio.addEventListener("loadedmetadata", function () {
   // Create a new AudioContext object
-  var context = new AudioContext();
+  var context = new AudioContext(
+    "audio/ich-hab-vergessen-clean-demo-acoustic-with-voacls.mp3"
+  );
 
   // Create a new MediaElementAudioSourceNode object from the Audio object
   var source = context.createMediaElementSource(audio);
